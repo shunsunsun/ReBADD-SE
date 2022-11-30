@@ -1,0 +1,14 @@
+data/.ipynb_checkpoints
+data/chembl/.ipynb_checkpoints
+data/chembl/chembl_train_full.csv
+data/chembl/chembl_train.txt
+data/chembl/chembl_gsk3_jnk3_qed_sa.csv
+data/zinc15/.ipynb_checkpoints
+data/zinc15/zinc15_train_full.csv
+rebadd/.ipynb_checkpoints
+rebadd/__pycache__
+rebadd/SA_module/__pycache__
+rebadd/RA_module/__pycache__
+rebadd/BA_module/module/__pycache__
+rebadd/GSK3_module/__pycache__
+rebadd/JNK3_module/__pycache__
