@@ -7,6 +7,7 @@ from rdkit.Chem.Crippen import MolLogP
 from rdkit.Chem import QED
 from rdkit.Chem.AllChem import GetMorganFingerprintAsBitVect
 from rdkit.DataStructs import TanimotoSimilarity
+from QEPPI import QEPPI_Calculator
 
 FEASIBILITY_MODULE_PATH = os.path.abspath(os.path.dirname(__file__))
 sys.path = sys.path if FEASIBILITY_MODULE_PATH in sys.path else [FEASIBILITY_MODULE_PATH] + sys.path
@@ -14,6 +15,16 @@ from SA_module.sascorer import readFP2Score, calculateScore
 from RA_module.RAscore_XGB import RAScorerXGB
 from GSK3_module.utils import gsk3_model
 from JNK3_module.utils import jnk3_model
+
+
+class QEPPIScorer:
+    def __init__(self):
+        self.model = QEPPI_Calculator()
+        self.model.read()
+        
+    def __call__(self, smi):
+        mol = MolFromSmiles(smi)
+        return self.model.qeppi(mol)
 
 
 class JNKScorer:
@@ -135,12 +146,15 @@ def calc_chem_properties(smi):
     return mw, clogp, tpsa, qed
     
     
+def get_ecfp6(smi):
+    mol = MolFromSmiles(smi)
+    return GetMorganFingerprintAsBitVect(mol, 3, nBits=2048, useChirality=False)
+    
+    
 def calc_structural_similarity(smi_1, smi_2):
     try:
-        mol_1 = MolFromSmiles(smi_1)
-        mol_2 = MolFromSmiles(smi_2)
-        fp_1 = GetMorganFingerprintAsBitVect(mol_1, 2, nBits=2048, useChirality=False)
-        fp_2 = GetMorganFingerprintAsBitVect(mol_2, 2, nBits=2048, useChirality=False)
+        fp_1 = get_ecfp6(smi_1)
+        fp_2 = get_ecfp6(smi_2)
         score = TanimotoSimilarity(fp_1, fp_2)
     except:
         score = 0.

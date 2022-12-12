@@ -23,3 +23,6 @@ dependencies:
   - lifelines
   - selfies
   - textdistance
+  - pip
+  - pip:
+      - QEPPI

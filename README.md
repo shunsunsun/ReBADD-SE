@@ -9,12 +9,13 @@ conda env create -f environment.yml
 
 ----
 # Task Descriptions
-- TASK1: ReBADD-SE for GSK3b, JNK3, QED, and SA
-- TASK2: ReBADD-SE for GSK3b, JNK3, QED, and SA (wo SELFIES fragment)
-- TASK3: ReBADD-SE for BCL2, BCLXL, and BCLW
-- TASK4: ReBADD-SE for BCL2, BCLXL, and BCLW (wo SELFIES fragment)
-- TASK5: Ablation Study of ReBADD-SE (BCL2, BCLXL, and BCLW)
-
+- TASK1: ReBADD-SE for GSK3b, JNK3, QED, and SA (frag-level)
+- TASK2: ReBADD-SE for GSK3b, JNK3, QED, and SA (char-level)
+- TASK3: ReBADD-SE for BCL2, BCLXL, and BCLW (frag-level)
+- TASK4: ReBADD-SE for BCL2, BCLXL, and BCLW (char-level)
+- TASK5: ReBADD-SE for BCL2, BCLXL, and BCLW (frag-level & original SCST)
+- TASK6: ReBADD-SE for BCL2, BCLXL, and BCLW (char-level & original SCST)
+- TASK7: SELFIES Collapse Analaysis between ReBADD-SE (frag, char-level) and GA+D
 
 ----
 # Notebook Descriptions
